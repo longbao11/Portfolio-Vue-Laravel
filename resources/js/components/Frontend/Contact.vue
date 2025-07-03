@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import Email from '@/assets/Email.png';
 import Phone from '@/assets/Phone.png';
 import LinkedIn from '@/assets/Linkedin.png';

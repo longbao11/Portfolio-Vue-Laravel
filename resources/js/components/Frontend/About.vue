@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 import schoolIcon from '@/assets/School.png';
 import { onMounted } from 'vue';

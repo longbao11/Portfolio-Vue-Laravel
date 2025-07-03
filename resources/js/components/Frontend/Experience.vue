@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 import workIcon from '@/assets/Developer.png';
 import logisticsIcon from '@/assets/Logistics.png';
