@@ -1,7 +1,4 @@
 #!/bin/sh
-
-# Replace ${PORT} in the Nginx conf with actual env var
-envsubst '$PORT' < /etc/nginx/conf.d/default.conf > /etc/nginx/conf.d/default.conf.tmp
-mv /etc/nginx/conf.d/default.conf.tmp /etc/nginx/conf.d/default.conf
-
+envsubst '$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf
+php-fpm &
 nginx -g 'daemon off;'

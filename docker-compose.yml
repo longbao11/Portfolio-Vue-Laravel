@@ -11,7 +11,6 @@ services:
 
   web:
     image: nginx:alpine
-    entrypoint: [ "/bin/sh", "-c", "/var/www/nginx/start.sh" ]
     ports:
       - "80:${PORT}"
     volumes:
