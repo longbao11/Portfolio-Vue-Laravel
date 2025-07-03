@@ -2,7 +2,7 @@ Git Clone ~~~~~
 
 - Type in terminal
 
-1) composer install
+1) composer install (required some time)
 2) npm install
 
 3) cp .env.example .env
