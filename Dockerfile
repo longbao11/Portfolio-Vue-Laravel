@@ -7,7 +7,7 @@ RUN composer install --no-dev --no-scripts --prefer-dist
 
 COPY . .
 
-RUN apt-get update && apt-get install -y curl gnupg zip unzip
+RUN apk update && apk add --no-cache curl gnupg zip unzip nodejs npm
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
 RUN apt-get install -y nodejs
 RUN npm install && npm run build
