@@ -2,7 +2,7 @@
 FROM node:18 as node_builder
 
 WORKDIR /app
-COPY package*.json vite.config.js ./
+COPY package*.json vite.config.ts ./
 COPY resources ./resources
 COPY public ./public
 RUN npm install
