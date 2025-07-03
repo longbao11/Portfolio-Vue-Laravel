@@ -1,32 +1,38 @@
+# ---------- Build Stage ----------
 FROM composer:2.6 as build
 
 WORKDIR /app
 
+# Install PHP dependencies
 COPY composer.json composer.lock ./
-RUN composer install --no-dev --no-scripts --prefer-dist
+RUN composer install --no-dev --prefer-dist
 
+# Copy source code
 COPY . .
 
-RUN apk update && apk add --no-cache curl gnupg zip unzip nodejs npm
-
+# Install Node.js + build frontend (Vite + Inertia)
+RUN apk add --no-cache curl gnupg zip unzip nodejs npm
 RUN npm install && npm run build
 
-# Laravel config + route caching
-RUN php artisan config:cache
-RUN php artisan route:cache
+# Laravel optimization
+RUN php artisan config:cache && php artisan route:cache
 
-# ✅ Create SQLite file during build (optional — safer in final image)
-# RUN mkdir -p database && touch database/database.sqlite
 
+# ---------- Runtime Stage ----------
 FROM php:8.2-cli
 
 WORKDIR /app
 COPY --from=build /app /app
 
-# ✅ Install Laravel dependencies in runtime image too
-RUN apt-get update && apt-get install -y unzip libzip-dev && docker-php-ext-install zip pdo pdo_sqlite
+# Install required PHP extensions for SQLite and Laravel
+RUN apt-get update && apt-get install -y \
+    libzip-dev \
+    libsqlite3-dev \
+    unzip \
+    zip \
+    && docker-php-ext-install zip pdo pdo_sqlite
 
-# ✅ Create the SQLite file, run migrations when the container starts
+# Startup: create DB, run migrations, serve app
 CMD bash -c "\
     mkdir -p database && \
     touch database/database.sqlite && \
