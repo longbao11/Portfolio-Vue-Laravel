@@ -13,3 +13,5 @@ Git Clone ~~~~~
 
 7) php artisan serve 
 
+After login:
+change to http://127.0.0.1:8000/
