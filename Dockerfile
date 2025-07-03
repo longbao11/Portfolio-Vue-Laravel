@@ -11,7 +11,7 @@ RUN npm run build
 FROM php:8.2-fpm as php_builder
 
 RUN apt-get update && apt-get install -y \
-    zip unzip git curl sqlite3 libzip-dev \
+    zip unzip git curl libsqlite3-dev libzip-dev \
     && docker-php-ext-install pdo pdo_sqlite zip
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
