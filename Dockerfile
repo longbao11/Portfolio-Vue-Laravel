@@ -36,7 +36,7 @@ RUN chown -R www-data:www-data storage bootstrap/cache
 FROM php:8.2-fpm
 
 # Install Nginx and dependencies
-RUN apt-get update && apt-get install -y nginx libsqlite3-dev libzip-dev unzip \
+RUN apt-get update && apt-get install -y nginx gettext-base libsqlite3-dev libzip-dev unzip \
     && docker-php-ext-install pdo pdo_sqlite zip
 
 WORKDIR /var/www
