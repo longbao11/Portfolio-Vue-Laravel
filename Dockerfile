@@ -24,7 +24,7 @@ RUN composer install --no-dev --optimize-autoloader
 
 # Copy built Vite assets
 COPY --from=node_builder /app/public /var/www/public
-COPY --from=node_builder /app/resources/js/Pages /var/www/resources/js/Pages
+COPY --from=node_builder /app/resources/js/pages /var/www/resources/js/pages
 
 # Set proper permissions
 RUN chown -R www-data:www-data storage bootstrap/cache
