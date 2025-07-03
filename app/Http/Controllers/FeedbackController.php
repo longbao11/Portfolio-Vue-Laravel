@@ -19,4 +19,10 @@ class FeedbackController extends Controller
 
         return back()->with('success', 'Thank you for your message!');
     }
+
+    public function index()
+    {
+        $messages = \App\Models\Feedback::all();
+        return response()->json($messages);
+    }
 }

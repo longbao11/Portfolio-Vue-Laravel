@@ -26,7 +26,7 @@ const handleSubmit = () => {
         },
         onError: () => {
             toast.error('Failed to send. Please check your inputs.');
-            console.log('Validation errors:', form.errors);
+            // console.log('Validation errors:', form.errors);
         },
     });
 };
