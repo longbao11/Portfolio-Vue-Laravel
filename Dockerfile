@@ -8,8 +8,7 @@ RUN composer install --no-dev --no-scripts --prefer-dist
 COPY . .
 
 RUN apk update && apk add --no-cache curl gnupg zip unzip nodejs npm
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
-RUN apt-get install -y nodejs
+
 RUN npm install && npm run build
 
 RUN php artisan config:cache
