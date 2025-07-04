@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  laravel-app:
+    build:
+      context: .
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    environment:
+      APP_ENV: production
+      APP_DEBUG: false
+    restart: unless-stopped

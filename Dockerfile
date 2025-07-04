@@ -1,20 +1,57 @@
-FROM richarvey/nginx-php-fpm:latest
+FROM php:8.2-fpm
 
-COPY . .
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    nginx \
+    unzip \
+    curl \
+    git \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    libonig-dev \
+    libxml2-dev \
+    libzip-dev \
+    sqlite3 \
+    libsqlite3-dev \
+    zip \
+    supervisor \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install pdo pdo_mysql pdo_sqlite mbstring exif pcntl bcmath gd
 
-# Image config
-ENV SKIP_COMPOSER 1
-ENV WEBROOT /var/www/html/public
-ENV PHP_ERRORS_STDERR 1
-ENV RUN_SCRIPTS 1
-ENV REAL_IP_HEADER 1
+# Install Composer
+COPY --from=composer:2.7 /usr/bin/composer /usr/bin/composer
 
-# Laravel config
-ENV APP_ENV production
-ENV APP_DEBUG false
-ENV LOG_CHANNEL stderr
+# Create SQLite DB and set permissions
+RUN mkdir -p /var/www/html/database && \
+    touch /var/www/html/database/database.sqlite && \
+    chown -R www-data:www-data /var/www/html/database && \
+    chmod -R 775 /var/www/html/database
 
-# Allow composer to run as root
-ENV COMPOSER_ALLOW_SUPERUSER 1
+# Copy app source
+COPY . /var/www/html
 
-CMD ["/start.sh"]
+# Set working directory
+WORKDIR /var/www/html
+
+# Set permissions
+RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
+
+# Copy Nginx config
+COPY conf/nginx/nginx-site.conf /etc/nginx/sites-available/default
+
+# Copy Supervisor config
+COPY conf/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# Copy Laravel deploy script
+COPY scripts/00-laravel-deploy.sh /usr/local/bin/laravel-deploy.sh
+RUN chmod +x /usr/local/bin/laravel-deploy.sh
+
+# Expose port
+EXPOSE 80
+
+# Start container
+COPY scripts/start.sh /usr/local/bin/start.sh
+RUN chmod +x /usr/local/bin/start.sh
+
+CMD ["bash", "/usr/local/bin/start.sh"]
