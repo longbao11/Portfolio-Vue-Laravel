@@ -1,0 +1,5 @@
+# prevent unnecessary files from being copy
+
+vendor/
+node_modules/
+nginx/
