@@ -39,7 +39,7 @@ WORKDIR /var/www/html
 RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
 
 # Copy Nginx config
-COPY conf/nginx/nginx-site.conf /etc/nginx/sites-available/default
+# COPY conf/nginx/nginx-site.conf /etc/nginx/sites-available/default
 
 # Copy Supervisor config
 COPY conf/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
