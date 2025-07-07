@@ -23,10 +23,10 @@ RUN apt-get update && apt-get install -y \
 COPY --from=composer:2.7 /usr/bin/composer /usr/bin/composer
 
 # Create SQLite DB and set permissions
-RUN mkdir -p /var/www/html/database && \
-    touch /var/www/html/database/database.sqlite && \
-    chown -R www-data:www-data /var/www/html/database && \
-    chmod -R 775 /var/www/html/database
+# RUN mkdir -p /var/www/html/database && \
+#     touch /var/www/html/database/database.sqlite && \
+#     chown -R www-data:www-data /var/www/html/database && \
+#     chmod -R 775 /var/www/html/database
 
 # Copy app source
 COPY . /var/www/html
@@ -48,7 +48,7 @@ COPY scripts/00-laravel-deploy.sh /usr/local/bin/laravel-deploy.sh
 RUN chmod +x /usr/local/bin/laravel-deploy.sh
 
 # Expose port
-EXPOSE 80
+EXPOSE ${PORT}
 
 # Start container
 COPY scripts/start.sh /usr/local/bin/start.sh

@@ -5,10 +5,11 @@ services:
     build:
       context: .
     ports:
-      - "8080:80"
+      - "8080:8080"
     volumes:
       - .:/var/www/html
     environment:
+      PORT: 8080
       APP_ENV: production
       APP_DEBUG: false
     restart: unless-stopped
