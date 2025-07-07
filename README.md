@@ -5,8 +5,6 @@
 - npm install
 - cp .env.example .env
 - php artisan key:generate
-- type nul > database\database.sqlite
-- php artisan migrate
 - php artisan serve 
 
 After login:
