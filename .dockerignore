@@ -3,6 +3,6 @@
 vendor/
 node_modules/
 #.env
-*.sqlite
+# *.sqlite
 npm-debug.log
 .DS_Store
