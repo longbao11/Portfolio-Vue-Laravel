@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y \
     libsqlite3-dev \
     zip \
     supervisor \
+    gettext \  
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install pdo pdo_mysql pdo_sqlite mbstring exif pcntl bcmath gd
 
@@ -43,15 +44,18 @@ COPY conf/nginx/nginx-site.conf /etc/nginx/sites-available/default
 # Copy Supervisor config
 COPY conf/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+# Copy Nginx template config
+COPY conf/nginx/nginx-site.conf.template /etc/nginx/templates/nginx-site.conf.template
+
 # Copy Laravel deploy script
 COPY scripts/00-laravel-deploy.sh /usr/local/bin/laravel-deploy.sh
 RUN chmod +x /usr/local/bin/laravel-deploy.sh
 
-# Expose port
-EXPOSE ${PORT}
-
 # Start container
 COPY scripts/start.sh /usr/local/bin/start.sh
 RUN chmod +x /usr/local/bin/start.sh
+
+# Expose port
+EXPOSE ${PORT}
 
 CMD ["bash", "/usr/local/bin/start.sh"]
