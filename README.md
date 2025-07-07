@@ -21,3 +21,5 @@ https://portfolio-chongbaolong.onrender.com/
 
 - Click the link again
 
+4) Data can only be stored on Render for 15 min...
+
