@@ -17,12 +17,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::post('/contact', [FeedbackController::class, 'store'])->name('feedback.store');
-
     Route::get('/admin/messages', [FeedbackController::class, 'index'])->name('feedback.index');
 
-
 });
+
+Route::post('/contact', [FeedbackController::class, 'store'])->name('feedback.store');
+
 
 Route::get('/test', fn() => 'It works!');
 
