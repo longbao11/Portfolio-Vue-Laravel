@@ -18,7 +18,7 @@ import profileImage from '@/assets/ProfilePicture.jpg';
         <div class="flex flex-col-reverse lg:flex-row items-center justify-between w-full max-w-6xl gap-12">
             <!-- Left Content -->
             <div class="max-w-2xl text-center lg:text-left">
-                <h1 class="text-5xl font-semibold tracking-tight text-gray-900 sm:text-6xl">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-gray-900 sm:text-6xl">
                     Hi, I'm Bao Long <br /> — a Web Developer
                 </h1>
                 <p class="mt-5 text-lg font-medium text-gray-700 sm:text-xl text-justify leading-relaxed">
@@ -47,7 +47,7 @@ import profileImage from '@/assets/ProfilePicture.jpg';
             <!-- Right Profile Image -->
             <div class="flex justify-center lg:justify-end">
                 <img :src="profileImage" alt="Profile"
-                    class=" sm:w-48 sm:h-48 lg:w-64 lg:h-64 rounded-full object-cover border-4 border-indigo-300 shadow-xl" />
+                    class="w-50 h-50 sm:w-65 sm:h-65 md:w-70 md:h-70 lg:w-80 lg:h-80 rounded-full object-cover border-4 border-indigo-300 shadow-xl" />
             </div>
         </div>
 

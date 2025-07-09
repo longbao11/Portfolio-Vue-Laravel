@@ -43,14 +43,14 @@ const experiences = ref([
         id: 2,
         role: 'Software Engineer | Jan 2024 - Aug 2024',
         company: 'EDESK SDN BHD | Kuala Lumpur',
-        description: 'Developed TNB Project using Angular, ASP.NET & PostgreSQL.'
+        description: 'Developed TNB Project using Angular, ASP.NET & PostgreSql.'
 
     },
     {
         id: 3,
         role: 'Software Engineer (Internship) | Aug 2023 - Nov 2023',
         company: 'CORETECH SERVCES SDN BHD | Kuala Lumpur',
-        description: 'Developed MSIG Asia Project using Angular, ASP.NET & MS Sql.'
+        description: 'Developed MSIG Asia Project using Angular, ASP.NET Core & MSSQL.'
     },
     {
         id: 4,
@@ -106,11 +106,13 @@ const { visible, targetRef } = useScrollReveal();
                             </div>
                             <div class="w-3/4 pl-4">
                                 <h3
-                                    class="text-[1.18em] font-semibold text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-red-500 ">
+                                    class="text-sm sm:text-lg md:text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-red-500 ">
                                     {{ element.role }}
                                 </h3>
-                                <p class="text-emerald-400">{{ element.company }}</p>
-                                <p class="text-slate-300">{{ element.description }}</p>
+                                <p class="text-emerald-400 text-sm sm:text-lg md:text-xl">{{ element.company }}</p>
+                                <p class="text-slate-300 text-justify font-serif text-sm sm:text-lg md:text-xl">{{
+                                    element.description }}
+                                </p>
                             </div>
                         </div>
                     </div>

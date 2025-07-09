@@ -52,7 +52,7 @@ const handleSubmit = () => {
                 <div class="space-y-6">
                     <div class="flex items-center">
                         <div
-                            class="w-12 h-12 flex justify-center items-center rounded-full overflow-hidden backdrop-blur">
+                            class="w-12 h-12 flex justify-center items-center rounded-full overflow-hidden backdrop-blur flex-shrink-0">
                             <img :src="Email" alt="email" class="w-full h-full object-contain" />
                         </div>
                         <div class="ml-5 text-black">
@@ -65,25 +65,25 @@ const handleSubmit = () => {
 
                     <div class="flex items-center">
                         <div
-                            class="w-12 h-12 flex justify-center items-center rounded-full overflow-hidden backdrop-blur">
+                            class="w-12 h-12 flex justify-center items-center rounded-full overflow-hidden backdrop-blur flex-shrink-0">
                             <img :src="Phone" alt="phone" class="w-full h-full object-contain" />
                         </div>
                         <div class="ml-5 text-black">
                             <h4>Phone:</h4>
-                            <p>+65 8543 0239</p>
+                            <p>+6010-864 3024 </p>
                         </div>
                     </div>
 
                     <div class="flex items-center">
                         <div
-                            class="w-12 h-12 flex justify-center items-center rounded-full overflow-hidden backdrop-blur">
+                            class="w-12 h-12 flex justify-center items-center rounded-full overflow-hidden backdrop-blur flex-shrink-0">
                             <img :src="LinkedIn" alt="linkedin" class="w-full h-full object-cover" />
                         </div>
                         <div class="ml-5 text-black">
                             <h4>LinkedIn:</h4>
                             <a href="https://www.linkedin.com/in/bao-long-chong-156974300/" target="_blank"
                                 class="text-blue-600 hover:underline">
-                                LinkedIn Profile
+                                https://www.linkedin.com/in/bao-long-chong-156974300
                             </a>
                         </div>
                     </div>

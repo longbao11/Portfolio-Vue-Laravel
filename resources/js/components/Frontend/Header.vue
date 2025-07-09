@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 
 
-const showMobileMenu = ref(false);
+const showMobileMenu = ref(true);
 
 </script>
 
@@ -12,7 +12,9 @@ const showMobileMenu = ref(false);
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
-                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Portfolio - CHONG BAO
+                <span
+                    class="self-center text-base md:text-2xl font-semibold whitespace-nowrap dark:text-white">Portfolio
+                    - CHONG BAO
                     LONG</span>
             </a>
             <button data-collapse-toggle="navbar-default" type="button" @click="showMobileMenu = !showMobileMenu"
