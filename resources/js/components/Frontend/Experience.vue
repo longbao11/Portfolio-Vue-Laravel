@@ -106,11 +106,11 @@ const { visible, targetRef } = useScrollReveal();
                             </div>
                             <div class="w-3/4 pl-4">
                                 <h3
-                                    class="text-sm sm:text-lg md:text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-red-500 ">
+                                    class="text-sm sm:text-lg md:text-[18px] font-semibold text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-red-500 ">
                                     {{ element.role }}
                                 </h3>
-                                <p class="text-emerald-400 text-sm sm:text-lg md:text-xl">{{ element.company }}</p>
-                                <p class="text-slate-300 text-justify font-serif text-sm sm:text-lg md:text-xl">{{
+                                <p class="text-emerald-400 text-sm sm:text-lg md:text-[17px]">{{ element.company }}</p>
+                                <p class="text-slate-300 text-justify font-serif text-sm sm:text-lg md:text-[1em]">{{
                                     element.description }}
                                 </p>
                             </div>
